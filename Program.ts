@@ -31,9 +31,11 @@ class Program {
 
   public run() {
     let choice: number = 0;
+    let moveX: number = 0,
+      moveY: number = 0;
     do {
       this.menu();
-      choice = Number(question("Chọn chức năng (Nhập số 0 để dùng): "));
+      choice = Number(question(`Chọn chức năng (Nhập số 0 để dùng): `));
       console.clear();
       switch (choice) {
         case 0:
@@ -43,60 +45,61 @@ class Program {
           this.point.scan();
           break;
         case 2:
-          let moveX = Number(question("Nhập số x để di chuyển: "));
-          let moveY = Number(question("Nhập số y để di chuyển: "));
+          moveX = Number(question(`Nhập số x để di chuyển: `));
+          moveY = Number(question(`Nhập số y để di chuyển: `));
           this.point.move(moveX, moveY);
-          console.log(chalk.green("Đã di chuyển điểm tới tọa độ: "));
+          console.log(chalk.green(`Đã di chuyển điểm tới tọa độ: `));
           this.point.print();
           break;
         case 3:
-          console.log("Nhập thông tin điểm thứ 2: ");
-          let newPoint = new Point2D(0, 0);
+          console.log(`Nhập thông tin điểm thứ 2: `);
+          let newPoint: Point2D = new Point2D(0, 0);
           newPoint.scan();
-          console.log(chalk.green("Khoảng cách 2 điểm"));
+          console.log(chalk.green(`Khoảng cách 2 điểm`));
           let d = this.point.getDistance(newPoint);
           console.log(d);
           break;
         case 4:
-          console.log(chalk.green("Thông tin tọa độ 1 điểm"));
+          console.log(chalk.green(`Thông tin tọa độ 1 điểm`));
           this.point.print();
           break;
         case 5:
-          console.log(chalk.green("Tọa độ tâm hình tròn: "));
-          let newCircle = new Circle(this.point, 1);
+          console.log(chalk.green(`Tọa độ tâm hình tròn: `));
+          let newCircle: Circle = new Circle(this.point, 1);
           newCircle.scan();
-          console.log(chalk.green("Thông tin hình tròn mới tạo: "));
+          console.log(chalk.green(`Thông tin hình tròn mới tạo: `));
           newCircle.print();
           break;
         case 6:
-          console.log(chalk.green("Tính diện tích hình tròn: "));
+          console.log(chalk.green(`Tính diện tích hình tròn: `));
           this.circle.scan();
           let area = this.circle.getArea();
           console.log(`Diện tích: ${area}`);
           break;
         case 7:
-          console.log(chalk.green("Tính chu vi hình tròn: "));
+          console.log(chalk.green(`Tính chu vi hình tròn: `));
           this.circle.scan();
           let p = this.circle.getPerimeter();
           console.log(`Chu vi: ${p}`);
           break;
         case 8:
-          console.log(chalk.green("Di chuyển tâm hình tròn: "));
-          moveX = Number(question("Nhập số x để di chuyển: "));
-          moveY = Number(question("Nhập số y để di chuyển: "));
+          console.log(chalk.green(`Di chuyển tâm hình tròn: `));
+          moveX = Number(question(`Nhập số x để di chuyển: `));
+          moveY = Number(question(`Nhập số y để di chuyển: `));
           this.circle.move(moveX, moveY);
-          console.log("Thông tin hình tròn sau khi dời tâm");
+          console.log(`Thông tin hình tròn sau khi dời tâm`);
           this.circle.print();
           break;
         case 9:
-          console.log(chalk.green("Thông tin hình tròn: "));
+          console.log(chalk.green(`Thông tin hình tròn: `));
           this.circle.print();
+          break;
         default:
-          console.log(chalk.red("Chức năng không tồn tại"));
+          console.log(chalk.red(`Chức năng không tồn tại`));
           break;
       }
     } while (choice !== 0);
-    console.log("Cảm ơn bạn đã sử dụng ứng dụng. Tạm biệt !");
+    console.log(`Cảm ơn bạn đã sử dụng ứng dụng. Tạm biệt !`);
   }
 }
 
